@@ -17,7 +17,7 @@ APP_DIR=2025_04_counter_demo npm run dev
 This works for projects in other directories too!
 
 ```
-APP_DIR=../2025_04_fast_demo npm run build
+APP_DIR=../other/dir/2025_04_fast_demo npm run build
 ```
 
 
