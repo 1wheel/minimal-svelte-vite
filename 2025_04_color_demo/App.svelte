@@ -48,8 +48,9 @@
         ctx.beginPath()
         ctx.moveTo(line.points[0].x, line.points[0].y)
         line.points.forEach(d => ctx.lineTo(d.x, d.y))
-        ctx.strokeStyle = hsl((time*20 + i*30) % 360, 1, 0.5).formatRgb()
+        ctx.strokeStyle = hsl((time*20 + i*30) % 18, 1, 0.5).formatRgb()
         // ctx.lineWidth = (line.dx*line.dx + line.dy*line.dy)/4 + .5
+
         ctx.lineWidth = Math.min(1/dist(line.points[0], line.points.at(-1))*30, 5) + .2
         ctx.stroke()
 
