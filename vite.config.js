@@ -6,6 +6,8 @@ function appDirPlugin() {
   const appDir = process.env.APP_DIR || '2025_04_counter_demo'
   console.log('Using app directory:', appDir)
 
+  const absoluteAppPath = path.resolve(process.cwd(), appDir)
+
   return {
     name: 'app-dir-selector',
     enforce: 'pre',
@@ -15,14 +17,24 @@ function appDirPlugin() {
         ...config,
         resolve: {
           alias: {
-            '/APP_DIR': path.resolve(process.cwd(), appDir)
-          }
+            '/APP_DIR': absoluteAppPath,
+            'd3': path.resolve(process.cwd(), 'node_modules/d3'), // Each clientside dependency needs this
+          },
+          preserveSymlinks: true
+        },
+        server: {
+          fs: {
+            allow: [
+              path.resolve(process.cwd(), '..'),
+              path.resolve(process.cwd(), 'node_modules')
+            ],
+          },
         }
       }
     },
 
     transformIndexHtml(html) {
-      return html.replace('APP_DIR', appDir)
+      return html.replace('/APP_DIR', absoluteAppPath)
     }
   }
 }
@@ -32,6 +44,9 @@ export default defineConfig({
     appDirPlugin(),
     svelte()
   ],
+  optimizeDeps: {
+    include: ['d3']
+  },
   build: {
     minify: false,
     rollupOptions: {

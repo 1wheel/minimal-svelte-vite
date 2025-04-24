@@ -14,6 +14,13 @@ or
 APP_DIR=2025_04_counter_demo npm run dev
 ```
 
+This works for projects in other directories too!
+
+```
+APP_DIR=../2025_04_fast_demo npm run build
+```
+
+
 ## Build
 
 ```
@@ -25,5 +32,4 @@ https://roadtolarissa.com/2025_04_color_demo/
 
 ## TODO
 
-- `APP_DIR=../2025_04_fast_demo npm run dev` throws `Error: The following dependencies are imported but could not be resolved: d3` — iiuc, we're screwing too much with node's module resolution.
 - We're locked into d3v7.9.0 across all the demo pages; upgrading in the future could break old pages (but previously baked out pages will be fine).
