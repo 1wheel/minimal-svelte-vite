@@ -1,0 +1,23 @@
+{
+  "name": "svelte-vite",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "bin": {
+    "vite-svelte": "./vite-svelte"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@rollup/rollup-darwin-arm64": "^4.24.0",
+    "@sveltejs/vite-plugin-svelte": "^5.0.0",
+    "svelte": "^5.0.0",
+    "vite": "^6.0.0"
+  },
+  "dependencies": {
+    "d3": "^7.9.0"
+  }
+}
